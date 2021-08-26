@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/myPurple"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        tools:ignore="UnknownIdInLayout">
+
+        <TextView
+            android:id="@+id/SelectExs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/didact_gothic"
+            android:text="@string/how_many_sets"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/lineexs"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SelectExs"
+            android:contentDescription="@string/todo" />
+
+        <EditText
+            android:id="@+id/uExerciseNameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edittext_design"
+            android:backgroundTint="@color/myLightPurple"
+            android:drawableStart="@drawable/running"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/white"
+            android:elevation="5dp"
+            android:fontFamily="@font/didact_gothic"
+            android:hint="@string/exercise"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/uRepsEditText"
+            android:autofillHints="@string/todo" />
+
+        <TextView
+            android:id="@+id/updateSetsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="40dp"
+            android:background="@color/myLightPurple"
+            android:elevation="1dp"
+            android:gravity="center"
+            android:text="@string/_2"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineexs" />
+
+        <TextView
+
+            android:id="@+id/updateWeightTextView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="40dp"
+            android:background="@color/myLightPurple"
+            android:elevation="1dp"
+            android:gravity="center"
+            android:text="@string/_80"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateSetsTextView" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/uSetsLeft"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/arrow_button_design"
+            android:drawableStart="@drawable/left"
+            android:paddingStart="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineexs"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/uWeightLeft"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/arrow_button_design"
+            android:drawableStart="@drawable/left"
+            android:paddingStart="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateSetsTextView"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/uSetsRight"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/arrow_button_design"
+            android:drawableEnd="@drawable/right"
+            android:paddingEnd="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.997"
+            app:layout_constraintTop_toBottomOf="@+id/lineexs"
+            tools:ignore="RtlSymmetry" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/uWeightRight"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/arrow_button_design"
+            android:drawableEnd="@drawable/right"
+            android:paddingEnd="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateSetsTextView"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/uRepsEditText"
+            android:layout_width="147dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="52dp"
+            android:maxLength="4"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/edittext_design"
+            android:backgroundTint="@color/myLightPurple"
+            android:drawableStart="@drawable/reps"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/didact_gothic"
+            android:hint="@string/reps"
+            android:inputType="number"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateSetsTextView"
+            android:autofillHints="@string/todo" />
+
+        <EditText
+            android:id="@+id/uRestEditText"
+            android:layout_width="147dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/edittext_design"
+            android:backgroundTint="@color/myLightPurple"
+            android:drawableStart="@drawable/resttime"
+            android:drawablePadding="5dp"
+            android:maxLength="4"
+            android:drawableTint="@color/white"
+            android:fontFamily="@font/didact_gothic"
+            android:hint="@string/rest"
+            android:inputType="number"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.962"
+            app:layout_constraintStart_toEndOf="@+id/uRepsEditText"
+            app:layout_constraintTop_toBottomOf="@+id/updateSetsTextView"
+            android:autofillHints="@string/todo" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:background="@drawable/signupbuttondes"
+            android:text="@string/update"
+            android:id="@+id/updateButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exerciseNameEditText"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

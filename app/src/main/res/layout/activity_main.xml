@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/myLightPurple"
+    tools:context=".main.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/loginframedesign"
+        android:elevation="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/loginTextMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/robotofat"
+                android:text="@string/login_uc"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/SignUpTextMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50sp"
+                android:text="@string/sign_up_uc"
+                android:fontFamily="@font/robotofat"
+                android:textColor="#00BCD4"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/userNameLogin"
+            android:layout_width="match_parent"
+            android:layout_height="35sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20sp"
+            android:hint="@string/username"
+            android:textColor="@color/white"
+            android:inputType="text"
+            android:background="@drawable/edittext_design"
+            android:drawableStart="@drawable/person"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:drawablePadding="5dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/didact_gothic"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/emailLoginMain"
+            android:layout_width="match_parent"
+            android:layout_height="35sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20sp"
+            android:background="@drawable/edittext_design"
+            android:hint="@string/email"
+            android:textSize="14sp"
+            android:inputType="textEmailAddress"
+            android:drawableStart="@drawable/emailpic"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            android:paddingEnd="10dp"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/didact_gothic"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userNameLogin"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/weightLogin"
+            android:layout_width="129dp"
+            android:layout_height="35sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:textSize="14sp"
+            android:background="@drawable/edittext_design"
+            android:drawableStart="@drawable/weight"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/didact_gothic"
+            android:hint="@string/weignt"
+            android:inputType="number"
+            android:paddingStart="10dp"
+            android:textColor="@color/white"
+            android:paddingEnd="10dp"
+            android:textColorHint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailLoginMain"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/heightLogin"
+            android:layout_width="129dp"
+            android:layout_height="35sp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edittext_design"
+            android:drawableStart="@drawable/height"
+            android:fontFamily="@font/didact_gothic"
+            android:hint="@string/height"
+            android:textColor="@color/white"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp"
+            android:textColorHint="@color/white"
+            android:textSize="14sp"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.09"
+            app:layout_constraintStart_toEndOf="@+id/weightLogin"
+            app:layout_constraintTop_toBottomOf="@+id/emailLoginMain"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/passwordLogin"
+            android:layout_width="match_parent"
+            android:layout_height="35sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/password"
+            android:paddingEnd="10dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:background="@drawable/edittext_design"
+            android:fontFamily="@font/didact_gothic"
+            android:textColorHint="@color/white"
+            android:drawablePadding="5sp"
+            android:paddingStart="10dp"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/password"
+            app:layout_constraintBottom_toTopOf="@+id/loginButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weightLogin"
+            app:layout_constraintVertical_bias="1.0"
+            android:autofillHints="" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loginButton"
+            android:layout_width="180dp"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/signupbuttondes"
+            android:elevation="12dp"
+            android:text="@string/sign_up"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/robotofat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
