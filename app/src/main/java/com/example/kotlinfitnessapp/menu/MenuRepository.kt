@@ -7,10 +7,11 @@ import com.example.kotlinfitnessapp.model.Workout
 
 interface MenuRepository {
     fun getWorkouts(): LiveData<List<Workout>>
-    fun deleteWorkout(id:String)
+    suspend fun deleteWorkout(id:String)
     fun getCurrentUser():LiveData<User>
-    fun addDay(day: DietDay)
+    suspend fun addDay(day: DietDay)
     fun getAllDays():LiveData<List<DietDay>>
-    fun deleteDay(id: String)
-    fun deleteData()
+    suspend fun deleteDay(id: String)
+    suspend fun deleteData()
+
 }

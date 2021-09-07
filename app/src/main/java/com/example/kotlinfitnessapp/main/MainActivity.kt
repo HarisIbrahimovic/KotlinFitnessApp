@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                 viewModel.setToastMessage("none")
             }
         })
+
         viewModel.getStateNum().observe(this,{
             setUpColors(it)
         })

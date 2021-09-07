@@ -58,6 +58,8 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout),WorkoutAdapter.OnIte
             adapter.setList(list)
             listOfWorkouts= list
         })
+
+
     }
 
     override fun onDestroy() {
@@ -66,8 +68,10 @@ class WorkoutFragment : Fragment(R.layout.fragment_workout),WorkoutAdapter.OnIte
     }
 
     override fun onClick(num: Int) {
+
         val intent = Intent(activity,ExercisesActivity::class.java)
         intent.putExtra("workoutId",listOfWorkouts[num].id)
+        intent.putExtra("workoutName",listOfWorkouts[num].name)
         startActivity(intent)
     }
 

@@ -10,13 +10,13 @@ import com.example.kotlinfitnessapp.model.DietDay
 @Dao
 interface DayDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertDay(dietDay: DietDay?)
+    suspend fun insertDay(dietDay: DietDay?)
 
     @Query("DELETE FROM day_table")
-    fun deleteAllDays()
+    suspend fun deleteAllDays()
 
     @Query("DELETE FROM day_table WHERE id = :inputId")
-    fun deleteDay(inputId: String?)
+    suspend fun deleteDay(inputId: String?)
 
     @Query("SELECT * FROM day_table ")
     fun getAllDays(): LiveData<List<DietDay>>

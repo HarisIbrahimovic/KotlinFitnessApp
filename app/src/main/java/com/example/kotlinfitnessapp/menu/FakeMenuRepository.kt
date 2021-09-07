@@ -21,7 +21,7 @@ class FakeMenuRepository : MenuRepository {
 
     override fun getWorkouts(): LiveData<List<Workout>> = mList
 
-    override fun deleteWorkout(id: String) {
+    override suspend fun deleteWorkout(id: String) {
         var num =-1
         for(i in 0 until listOfWorkouts.size){
             if(id == listOfWorkouts[i].id) {
@@ -34,14 +34,14 @@ class FakeMenuRepository : MenuRepository {
 
     override fun getCurrentUser():LiveData<User> =cUser
 
-    override fun addDay(day: DietDay) {
+    override suspend fun addDay(day: DietDay) {
         listOfDaysA.add(day)
         listOfDays.value=listOfDaysA
     }
 
     override fun getAllDays(): LiveData<List<DietDay>> = listOfDays
 
-    override fun deleteDay(id: String) {
+    override suspend fun deleteDay(id: String) {
         for(i in 0 until listOfDaysA.size){
             if(id == listOfDaysA[i].id) {
                 listOfDaysA.removeAt(i)
@@ -51,7 +51,7 @@ class FakeMenuRepository : MenuRepository {
         listOfDays.value=listOfDaysA
     }
 
-    override fun deleteData() {
+    override suspend fun deleteData() {
 
         val listOfWorkouts = ArrayList<Workout>()
         val listOfDaysA = ArrayList<DietDay>()
@@ -63,4 +63,5 @@ class FakeMenuRepository : MenuRepository {
         cUser.value = userValue
         listOfExercise.value = listOfExerciseA
     }
+
 }

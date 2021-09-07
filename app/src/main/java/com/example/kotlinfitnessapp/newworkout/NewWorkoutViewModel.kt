@@ -2,10 +2,13 @@ package com.example.kotlinfitnessapp.newworkout
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.kotlinfitnessapp.application.CONSTATNTS
 import com.example.kotlinfitnessapp.model.Exercise
 import com.example.kotlinfitnessapp.model.Workout
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -46,7 +49,8 @@ class NewWorkoutViewModel @Inject constructor(private val newWorkoutRepository: 
         if(workoutId==null){
             workoutId = generateRandomString()
             val workout = Workout(workoutId!!,name)
-            newWorkoutRepository.addWorkout(workout)
+            viewModelScope.launch(Dispatchers.IO) {
+                newWorkoutRepository.addWorkout(workout) }
             toastMessage.value="Workout created."
         }
     }
@@ -67,7 +71,9 @@ class NewWorkoutViewModel @Inject constructor(private val newWorkoutRepository: 
         val numSets = Integer.parseInt(sets)
         val numRest = Integer.parseInt(rest)
         val exercise = Exercise(exerciseId,workoutId!!,exerciseName,numWeight,numReps,numRest,numSets)
-        newWorkoutRepository.addExercise(exercise)
+        viewModelScope.launch(Dispatchers.IO) {
+            newWorkoutRepository.addExercise(exercise)
+        }
         toastMessage.value="Exercise added."
 
     }

@@ -3,11 +3,14 @@ package com.example.kotlinfitnessapp.menu
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.kotlinfitnessapp.model.DietDay
 import com.example.kotlinfitnessapp.model.User
 import com.example.kotlinfitnessapp.model.Workout
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,7 +26,7 @@ class MenuViewModel @Inject constructor(private val menuRepository: MenuReposito
 
     private lateinit var dietDay: DietDay
 
-    fun deleteWorkout(id:String){menuRepository.deleteWorkout(id)}
+    fun deleteWorkout(id:String)=viewModelScope.launch(Dispatchers.IO){menuRepository.deleteWorkout(id)}
     fun setFragmentNum(num:Int){fragmentNum.value=num}
     fun getListOfWorkouts() = listOfWorkouts
     fun getToastMessage() = toastMessage
@@ -34,6 +37,7 @@ class MenuViewModel @Inject constructor(private val menuRepository: MenuReposito
 
     init {
         toastMessage.value="none"
+
     }
 
     fun setToastMessage(s: String) {
@@ -41,12 +45,16 @@ class MenuViewModel @Inject constructor(private val menuRepository: MenuReposito
     }
 
     fun deleteDay(id: String) {
-        menuRepository.deleteDay(id)
+        viewModelScope.launch(Dispatchers.IO) {
+            menuRepository.deleteDay(id)
+        }
     }
 
     fun deletData(){
         FirebaseAuth.getInstance().signOut()
-        menuRepository.deleteData()
+        viewModelScope.launch(Dispatchers.IO) {
+            menuRepository.deleteData()
+        }
     }
 
     fun addDay(id:String?,protein: String, carbs: String, fats: String) {
@@ -62,7 +70,9 @@ class MenuViewModel @Inject constructor(private val menuRepository: MenuReposito
             if(id==null) DietDay(generateRandomString(),numProtein,numCarbs,numCalories,numFats)
             else DietDay(id,numProtein,numCarbs,numCalories,numFats)
         toastMessage.value="Day added."
-        menuRepository.addDay(dietDay)
+        viewModelScope.launch {
+            menuRepository.addDay(dietDay)
+        }
     }
 
     private fun generateRandomString(len: Int = 30): String{

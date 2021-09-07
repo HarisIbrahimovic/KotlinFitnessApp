@@ -19,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MenuActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMenuBinding
     private lateinit var fragment:Fragment
     private val viewModel: MenuViewModel by viewModels()
@@ -48,6 +49,7 @@ class MenuActivity : AppCompatActivity() {
             }
             supportFragmentManager.beginTransaction().replace(R.id.menuFragmentFrame,fragment).commit()
         })
+
     }
 
     private fun setUpView() {
@@ -77,4 +79,5 @@ class MenuActivity : AppCompatActivity() {
          }
          return false
     }
+
 }

@@ -19,7 +19,7 @@ class RealExerciseRepository@Inject constructor(val workoutDao: WorkoutDao,val e
         return exerciseList
     }
 
-    override fun updateExercise(exercise: Exercise) {
+    override suspend fun updateExercise(exercise: Exercise) {
         GlobalScope.launch {
             exerciseDao.addExercise(exercise)
         }
@@ -27,7 +27,7 @@ class RealExerciseRepository@Inject constructor(val workoutDao: WorkoutDao,val e
         dbRef.child(exercise.id).setValue(exercise)
     }
 
-    override fun deleteWorkout(id: String) {
+    override suspend fun deleteWorkout(id: String) {
         GlobalScope.launch {
             workoutDao.deleteWorkout(id)
         }
@@ -35,7 +35,7 @@ class RealExerciseRepository@Inject constructor(val workoutDao: WorkoutDao,val e
         dbRef.removeValue()
     }
 
-    override fun deleteExercise(id: String) {
+    override suspend fun deleteExercise(id: String) {
         GlobalScope.launch {
             exerciseDao.deleteExs(id)
         }

@@ -8,11 +8,11 @@ class FakeNewWorkoutRepository:NewWorkoutRepository {
     val listOfWorkouts = ArrayList<Workout>()
     val listOfExercises = ArrayList<Exercise>()
 
-    override fun addWorkout(workout: Workout) {
+    override suspend fun addWorkout(workout: Workout) {
         listOfWorkouts.add(workout)
     }
 
-    override fun addExercise(exercise: Exercise) {
+    override suspend fun addExercise(exercise: Exercise) {
         listOfExercises.add(exercise)
     }
 }

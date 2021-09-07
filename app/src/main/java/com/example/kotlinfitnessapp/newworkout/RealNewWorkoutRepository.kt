@@ -12,10 +12,8 @@ import javax.inject.Inject
 
 class RealNewWorkoutRepository @Inject constructor(private val workoutDao: WorkoutDao,private val exerciseDao: ExerciseDao): NewWorkoutRepository {
 
-    override fun addWorkout(workout: Workout) {
-            GlobalScope.launch {
-                workoutDao.insertWorkout(workout)
-            }
+    override suspend fun addWorkout(workout: Workout) {
+            workoutDao.insertWorkout(workout)
             val dbRef = FirebaseDatabase.getInstance().getReference("UsersKotlin")
                 .child(FirebaseAuth.getInstance().currentUser!!.uid)
                 .child("Workout")
@@ -23,10 +21,8 @@ class RealNewWorkoutRepository @Inject constructor(private val workoutDao: Worko
             dbRef.setValue(workout)
     }
 
-    override fun addExercise(exercise: Exercise) {
-            GlobalScope.launch {
-                exerciseDao.addExercise(exercise)
-            }
+    override suspend fun addExercise(exercise: Exercise) {
+            exerciseDao.addExercise(exercise)
             val dbRef = FirebaseDatabase.getInstance().getReference("UsersKotlin")
                 .child(FirebaseAuth.getInstance().currentUser!!.uid)
                 .child("Exercises")

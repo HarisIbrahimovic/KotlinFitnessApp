@@ -1,6 +1,7 @@
 package com.example.kotlinfitnessapp.menu
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.kotlinfitnessapp.daos.DayDao
 import com.example.kotlinfitnessapp.daos.ExerciseDao
 import com.example.kotlinfitnessapp.daos.UserDao
@@ -35,35 +36,28 @@ class RealMenuRepository @Inject constructor(private val workoutDao: WorkoutDao,
         return listOfDays
     }
 
-    override fun addDay(day: DietDay) {
-        GlobalScope.launch {
-            dayDao.insertDay(day)
-        }
+    override suspend fun addDay(day: DietDay) {
+        dayDao.insertDay(day)
         val dbRef = FirebaseDatabase.getInstance().getReference("UsersKotlin").child(FirebaseAuth.getInstance().currentUser!!.uid).child("Days").child(day.id)
         dbRef.setValue(day)
     }
 
-    override fun deleteDay(id: String) {
-        GlobalScope.launch {
-            dayDao.deleteDay(id)
-        }
+    override suspend fun deleteDay(id: String) {
+        dayDao.deleteDay(id)
         val dbRef = FirebaseDatabase.getInstance().getReference("UsersKotlin").child(FirebaseAuth.getInstance().currentUser!!.uid).child("Days").child(id)
         dbRef.removeValue()
     }
 
-    override fun deleteData() {
-        GlobalScope.launch {
+    override suspend fun deleteData() {
             workoutDao.deleteAllWorkouts()
             exerciseDao.deleteAllExercises()
             userDao.deleteAllUsers()
             dayDao.deleteAllDays()
-        }
+
     }
 
-    override fun deleteWorkout(id: String) {
-        GlobalScope.launch {
-            workoutDao.deleteWorkout(id)
-        }
+    override suspend fun deleteWorkout(id: String) {
+        workoutDao.deleteWorkout(id)
         val dbRef = FirebaseDatabase.getInstance().getReference("UsersKotlin").child(FirebaseAuth.getInstance().currentUser!!.uid).child("Workouts").child(id)
         dbRef.removeValue()
     }

@@ -59,6 +59,9 @@ class ExercisesActivity : AppCompatActivity(), ExerciseAdapter.OnItemClickListen
             viewModel.setExerciseList(it)
             workoutId=it
         }
+        intent.getStringExtra("workoutName")?.let {
+            binding.textView4.text = it
+        }
         viewModel.getExerciseList().observe(this,{list->
             exerciseList=list
             adapter.setList(list)

@@ -4,6 +4,6 @@ import com.example.kotlinfitnessapp.model.Exercise
 import com.example.kotlinfitnessapp.model.Workout
 
 interface NewWorkoutRepository {
-    fun addWorkout(workout:Workout)
-    fun addExercise(exercise: Exercise)
+    suspend fun addWorkout(workout:Workout)
+    suspend fun addExercise(exercise: Exercise)
 }

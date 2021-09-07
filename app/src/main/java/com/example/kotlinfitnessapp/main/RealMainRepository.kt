@@ -15,6 +15,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -40,7 +41,7 @@ class RealMainRepository @Inject constructor(private val userDao: UserDao,privat
         databaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(User::class.java)
-                GlobalScope.launch {
+                GlobalScope.launch(Dispatchers.IO) {
                     userDao.addUser(user)
                     getWorkouts()
                     getExercises()
@@ -66,7 +67,7 @@ class RealMainRepository @Inject constructor(private val userDao: UserDao,privat
                 val fUser = auth.currentUser
                 val user = User(fUser!!.uid, height, weight, userName, email, password)
                 addToList(user)
-                GlobalScope.launch {
+                GlobalScope.launch(Dispatchers.IO) {
                     userDao.addUser(user)
                     getWorkouts()
                     getExercises()
@@ -92,7 +93,7 @@ class RealMainRepository @Inject constructor(private val userDao: UserDao,privat
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (dataSnapshot in snapshot.children) {
                     val exc = dataSnapshot.getValue(Exercise::class.java)
-                    GlobalScope.launch {
+                    GlobalScope.launch(Dispatchers.IO) {
                         exerciseDao.addExercise(exc)
                     }
                 }
@@ -110,7 +111,7 @@ class RealMainRepository @Inject constructor(private val userDao: UserDao,privat
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (dataSnapshot in snapshot.children) {
                     val workout = dataSnapshot.getValue(Workout::class.java)
-                    GlobalScope.launch {
+                    GlobalScope.launch(Dispatchers.IO) {
                         workoutDao.insertWorkout(workout)
                     }
                 }
@@ -126,7 +127,7 @@ class RealMainRepository @Inject constructor(private val userDao: UserDao,privat
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (dataSnapshot in snapshot.children) {
                     val day = dataSnapshot.getValue(DietDay::class.java)
-                    GlobalScope.launch {
+                    GlobalScope.launch(Dispatchers.IO) {
                         dayDao.insertDay(day)
                     }
                 }

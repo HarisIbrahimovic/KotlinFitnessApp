@@ -10,10 +10,10 @@ import com.example.kotlinfitnessapp.model.User
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addUser(user: User?)
+    suspend fun addUser(user: User?)
 
     @Query("DELETE FROM user_table")
-    fun deleteAllUsers()
+    suspend fun deleteAllUsers()
 
     @Query("SELECT * FROM user_table WHERE id = :inputId")
     fun getCurrentUser(inputId: String?): LiveData<User>

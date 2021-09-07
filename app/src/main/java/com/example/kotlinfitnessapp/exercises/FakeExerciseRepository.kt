@@ -12,7 +12,7 @@ class FakeExerciseRepository:ExerciseRepository {
     private val listOfExerciseA= ArrayList<Exercise>()
     override fun getExerciseList(id: String): LiveData<List<Exercise>> = listOfExercise
 
-    override fun updateExercise(exercise: Exercise) {
+    override suspend fun updateExercise(exercise: Exercise) {
         for(i in 0 until listOfExerciseA.size){
             if(exercise.id == listOfExerciseA[i].id){
                 listOfExerciseA[i]=exercise
@@ -20,7 +20,7 @@ class FakeExerciseRepository:ExerciseRepository {
         }
     }
 
-    override fun deleteWorkout(id: String) {
+    override suspend fun deleteWorkout(id: String) {
         for(i in 0 until listOfWorkouts.size){
             if(id == listOfWorkouts[i].id){
                 listOfWorkouts.removeAt(i)
@@ -28,7 +28,7 @@ class FakeExerciseRepository:ExerciseRepository {
         }
     }
 
-    override fun deleteExercise(id: String) {
+    override suspend fun deleteExercise(id: String) {
         for(i in 0 until listOfExerciseA.size){
             if(id == listOfExerciseA[i].id){
                 listOfExerciseA.removeAt(i)

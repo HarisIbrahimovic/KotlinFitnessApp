@@ -5,7 +5,7 @@ import com.example.kotlinfitnessapp.model.Exercise
 
 interface ExerciseRepository {
     fun getExerciseList(id:String): LiveData<List<Exercise>>
-    fun updateExercise(exercise: Exercise)
-    fun deleteWorkout(id:String)
-    fun deleteExercise(id: String)
+    suspend fun updateExercise(exercise: Exercise)
+    suspend fun deleteWorkout(id:String)
+    suspend fun deleteExercise(id: String)
 }

@@ -3,8 +3,11 @@ package com.example.kotlinfitnessapp.exercises
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.kotlinfitnessapp.model.Exercise
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,7 +34,9 @@ class ExerciseViewModel@Inject constructor(private val exerciseRepository: Exerc
         val numRest = Integer.parseInt(rest)
         val exercise:Exercise = if(exerciseId.isEmpty()) Exercise(generateRandomString(),workoutId,exerciseName,numWeight,numReps,numRest,numSets)
         else Exercise(exerciseId,workoutId,exerciseName,numWeight,numReps,numRest,numSets)
-        exerciseRepository.updateExercise(exercise)
+        viewModelScope.launch(Dispatchers.IO) {
+            exerciseRepository.updateExercise(exercise)
+        }
         toastMessage.value="Done"
     }
 
@@ -46,7 +51,9 @@ class ExerciseViewModel@Inject constructor(private val exerciseRepository: Exerc
     }
 
     fun deleteWorkout(workoutId: String) {
-        exerciseRepository.deleteWorkout(workoutId)
+        viewModelScope.launch(Dispatchers.IO) {
+            exerciseRepository.deleteWorkout(workoutId)
+        }
     }
 
     fun setToastMessage(s: String) {
@@ -54,7 +61,9 @@ class ExerciseViewModel@Inject constructor(private val exerciseRepository: Exerc
     }
 
     fun deleteExercise(id: String) {
-        exerciseRepository.deleteExercise(id)
+        viewModelScope.launch(Dispatchers.IO) {
+            exerciseRepository.deleteExercise(id)
+        }
     }
 
 

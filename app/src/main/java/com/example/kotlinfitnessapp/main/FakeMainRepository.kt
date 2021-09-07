@@ -27,7 +27,7 @@ class FakeMainRepository : MainRepository{
 
     override fun getUser(): LiveData<Boolean> = userLoggedIn
 
-    override fun addToList(user: User) {
+    override suspend fun addToList(user: User) {
         listOfUsers.add(user)
     }
 
